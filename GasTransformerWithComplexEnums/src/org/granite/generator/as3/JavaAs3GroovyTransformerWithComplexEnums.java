@@ -5,7 +5,7 @@ import java.net.URL;
 import org.granite.generator.as3.reflect.ComplexJavaEnum;
 import org.granite.generator.as3.reflect.JavaType;
 import org.granite.generator.as3.reflect.JavaType.Kind;
-import org.granite.util.ClassUtil;
+import org.granite.util.ClassUtil;;
 
 public class JavaAs3GroovyTransformerWithComplexEnums extends JavaAs3GroovyTransformer {
 

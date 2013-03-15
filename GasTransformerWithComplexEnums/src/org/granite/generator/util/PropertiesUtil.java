@@ -25,7 +25,6 @@ GRANITE DATA SERVICES
 
 package org.granite.generator.util;
 
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -43,7 +42,9 @@ import org.granite.generator.as3.reflect.JavaTypeFactory;
 import org.granite.generator.as3.reflect.JavaMethod.MethodType;
 import org.granite.messaging.amf.io.util.externalizer.annotation.ExternalizedProperty;
 import org.granite.messaging.amf.io.util.externalizer.annotation.IgnoredProperty;
+import org.granite.util.PropertyDescriptor;
 import org.granite.util.ClassUtil;
+
 
 public class PropertiesUtil {
 	
@@ -106,9 +107,10 @@ public class PropertiesUtil {
 	    return (propertyDescriptors != null ? propertyDescriptors : new PropertyDescriptor[0]);
 	}
 
-	    protected List<JavaProperty> getSortedUnmodifiableList(Collection<JavaProperty> coll) {
-	        List<JavaProperty> list = (coll instanceof List<?> ? (List<JavaProperty>)coll : new ArrayList<JavaProperty>(coll));
-	        Collections.sort(list);
-	        return Collections.unmodifiableList(list);
-	    }
+	protected List<JavaProperty> getSortedUnmodifiableList(Collection<JavaProperty> coll) {
+	    List<JavaProperty> list = (coll instanceof List<?> ? (List<JavaProperty>)coll : new ArrayList<JavaProperty>(coll));
+	    Collections.sort(list);
+	  return Collections.unmodifiableList(list);
+	}
+	
 }

@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.SortedMap;
 
 import org.granite.generator.as3.As3Type;
+import org.granite.generator.as3.ClientType;
 import org.granite.generator.util.PropertiesUtil;
 
 public class ComplexJavaEnum extends JavaEnum {
@@ -23,8 +24,7 @@ public class ComplexJavaEnum extends JavaEnum {
     
 	public ComplexJavaEnum(JavaTypeFactory provider, Class<?> type, URL url) {
 		super(provider, type, url);
-		
-        // Collect bean properties.
+	    // Collect bean properties.
         SortedMap<String,JavaProperty> sortedMap  = PropertiesUtil.getProperties(provider, type);
         sortedMap.remove("name");
         filterCalculatableProperties(sortedMap);
@@ -54,7 +54,7 @@ public class ComplexJavaEnum extends JavaEnum {
         return properties.values();
     }
    
-    private String converNullValueToAs3String(As3Type as3Type) {
+    private String converNullValueToAs3String(ClientType as3Type) {
     	if (As3Type.NUMBER.equals(as3Type)) {
 			return "NaN";
 		} else { 
@@ -67,7 +67,7 @@ public class ComplexJavaEnum extends JavaEnum {
     public String convertPropertyValueToAs3String(String propertyName, Object propertyValue) {
     	JavaProperty javaProperty = properties.get(propertyName);
     	String as3String = null;
-    	As3Type as3Type = javaProperty.getAs3Type();
+    	ClientType as3Type = this.provider.getAs3Type(javaProperty.getType());
     	if (propertyValue == null) {
     		return converNullValueToAs3String(as3Type);
     	}
